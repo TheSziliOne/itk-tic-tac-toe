@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        button.cpp \
         list.cpp \
         main.cpp \
         graphics/graphics.cpp \
@@ -27,6 +28,7 @@ INCLUDEPATH += $$PWD/SDL2
 DEPENDPATH += $$PWD/SDL2
 
 HEADERS += \
+    button.hpp \
     list.hpp \
     szamlalo.hpp \
     widgets.hpp
