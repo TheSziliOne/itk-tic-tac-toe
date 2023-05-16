@@ -3,6 +3,7 @@
 #include <vector>
 #include "szamlalo.hpp"
 #include "list.hpp"
+#include "button.hpp"
 #include <fstream>
 using namespace std;
 using namespace genv;
@@ -51,11 +52,13 @@ int main()
     Widget * c2 = new Counter(10,50,40,25,0,-20,20);
     Widget * lm1 = new ListMenu(65,100,100,60,a,2); //x koordináta, y koordináta, szélesség, magasság,string elemeket tartalmazó vektor, összes látható sor
     Widget * lm2 = new ListMenu(200,100,100,150,b,5);
+    Widget * b1 = new Button(100,10,50,50);
 
     w.push_back(c1);
     w.push_back(c2);
     w.push_back(lm1);
     w.push_back(lm2);
+    w.push_back(b1);
     for (Widget * wg : w) {
         wg->draw();
     }
