@@ -3,11 +3,18 @@
 
 using namespace genv;
 
-Application::Application(int width, int height)
+Application::Application(int width, int height) : _width(width),_height(height)
 {}
+
+void Application::draw()
+{
+    gout.open(_width,_height);
+
+}
 
 void Application::event_loop()
 {
+    draw();
     event ev;
     int focus = -1;
     while(gin >> ev )
@@ -27,9 +34,6 @@ void Application::event_loop()
         }
         gout << refresh;
     }
-}
 
-void Application::draw()
-{
-    gout.open(_width,_height);
+
 }
