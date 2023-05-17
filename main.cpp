@@ -12,6 +12,6 @@ using namespace genv;
 int main()
 {
     Application app = Application(640,480);
-    app.event_loop();
+    app.start();
     return 0;
 }

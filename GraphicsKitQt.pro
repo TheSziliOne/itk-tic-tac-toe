@@ -6,6 +6,7 @@ CONFIG -= qt
 SOURCES += \
         application.cpp \
         button.cpp \
+        cell.cpp \
         list.cpp \
         main.cpp \
         graphics/graphics.cpp \
@@ -31,6 +32,7 @@ DEPENDPATH += $$PWD/SDL2
 HEADERS += \
     application.hpp \
     button.hpp \
+    cell.hpp \
     list.hpp \
     szamlalo.hpp \
     widgets.hpp
