@@ -107,47 +107,30 @@ void Application::logic()
 
     }
 //-------------Balról-Jobbra dőlő diagonális win condition check-------------------//
-    for(int x = 0; x < kx; x++)
+
+    for(int i = 0; i < 15; i++)
     {
-        for(int y = 0; y < ky; y++)
-        {
-            if(_cells[y][x]->get_is_X() == true && _cells[y][x]->get_is_claimed())
-            {
-                p1_points++;
-                p2_points = 0;
-                if (y == 14)
-                {
-                    p1_points = 0;
-                }
-                if (p1_points == 5)
-                {
-                   abort();
-                }
-            }
-            else if(_cells[y][x]->get_is_X() == false && _cells[y][x]->get_is_claimed())
-            {
-                p2_points++;
-                p1_points = 0;
-                if (y == 14)
-                {
-                    p2_points = 0;
-                }
-                if (p2_points == 5)
-                {
-                    abort();
-                }
-            }
-            else
-            {
-                p1_points = 0;
-                p2_points = 0;
-            }
-        }
+        diagonal_check_RtoL_bhalf(i);
+    }
+    for(int i = 0; i < 15; i++)
+    {
+        diagonal_check_RtoL_uhalf(i);
+    }
+
+    for(int i = 0; i < 15; i++)
+    {
+        diagonal_check_LtoR_bhalf(i);
+    }
+
+    for(int i = 0; i < 15; i++)
+    {
+        diagonal_check_LtoR_uhalf(i);
+    }
 
     p1_points = 0;
     p2_points = 0;
 
-    }
+
 }
 
 void Application::draw()
@@ -224,5 +207,184 @@ void Application::event_loop()
             }
         }
         gout << refresh;
+    }
+}
+
+void Application::diagonal_check_RtoL_bhalf(int _y)
+{
+    int p1_points = 0;
+    int p2_points = 0;
+    int x = 0;
+    for (int y = _y; y < 15; y++)
+    {
+
+        if(_cells[x][y]->get_is_X() == true && _cells[x][y]->get_is_claimed())
+        {
+            p1_points++;
+            p2_points = 0;
+
+            if (p1_points == 5)
+            {
+               abort();
+            }
+            if (y == 14)
+            {
+                p1_points = 0;
+            }
+        }
+        else if(_cells[x][y]->get_is_X() == false && _cells[x][y]->get_is_claimed())
+        {
+            p2_points++;
+            p1_points = 0;
+
+            if (p2_points == 5)
+            {
+                abort();
+            }
+            if (y == 14)
+            {
+                p2_points = 0;
+            }
+        }
+        else
+        {
+            p1_points = 0;
+            p2_points = 0;
+        }
+        x++;
+    }
+}
+
+void Application::diagonal_check_RtoL_uhalf(int _x)
+{
+    int p1_points = 0;
+    int p2_points = 0;
+    int y = 0;
+    for (int x = _x; x < 15; x++)
+    {
+        if(_cells[x][y]->get_is_X() == true && _cells[x][y]->get_is_claimed())
+        {
+            p1_points++;
+            p2_points = 0;
+
+            if (p1_points == 5)
+            {
+               abort();
+            }
+            if (x == 14)
+            {
+                p1_points = 0;
+            }
+        }
+        else if(_cells[x][y]->get_is_X() == false && _cells[x][y]->get_is_claimed())
+        {
+            p2_points++;
+            p1_points = 0;
+
+            if (p2_points == 5)
+            {
+                abort();
+            }
+            if (x == 14)
+            {
+                p2_points = 0;
+            }
+        }
+        else
+        {
+            p1_points = 0;
+            p2_points = 0;
+        }
+        y++;
+    }
+}
+
+void Application::diagonal_check_LtoR_bhalf(int _x)
+{
+    int p1_points = 0;
+    int p2_points = 0;
+    int y = 14;
+    for (int x = _x; x < 15; x++)
+    {
+
+        if(_cells[x][y]->get_is_X() == true && _cells[x][y]->get_is_claimed())
+        {
+            p1_points++;
+            p2_points = 0;
+
+            if (p1_points == 5)
+            {
+               abort();
+            }
+            if (y == 0)
+            {
+                p1_points = 0;
+            }
+        }
+        else if(_cells[x][y]->get_is_X() == false && _cells[x][y]->get_is_claimed())
+        {
+            p2_points++;
+            p1_points = 0;
+
+            if (p2_points == 5)
+            {
+                abort();
+            }
+            if (y == 0)
+            {
+                p2_points = 0;
+            }
+        }
+        else
+        {
+            p1_points = 0;
+            p2_points = 0;
+        }
+        y--;
+    }
+}
+
+void Application::diagonal_check_LtoR_uhalf(int _y)
+{
+    int p1_points = 0;
+    int p2_points = 0;
+    int x = 0;
+    for (int y = _y; y >= 0; y--)
+    {
+
+        if(_cells[x][y]->get_is_X() == true && _cells[x][y]->get_is_claimed())
+        {
+            p1_points++;
+            p2_points = 0;
+
+            if (p1_points == 5)
+            {
+               abort();
+            }
+            if (y == 0)
+            {
+                p1_points = 0;
+            }
+        }
+        else if(_cells[x][y]->get_is_X() == false && _cells[x][y]->get_is_claimed())
+        {
+            p2_points++;
+            p1_points = 0;
+
+            if (p2_points == 5)
+            {
+                abort();
+            }
+            if (y == 0)
+            {
+                p2_points = 0;
+            }
+        }
+        else
+        {
+            p1_points = 0;
+            p2_points = 0;
+        }
+        x++;
     }
 }

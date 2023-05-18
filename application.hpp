@@ -16,6 +16,10 @@ private:
     void event_loop();
     void setup();
     void logic();
+    void diagonal_check_RtoL_bhalf(int y);
+    void diagonal_check_RtoL_uhalf(int y);
+    void diagonal_check_LtoR_bhalf(int y);
+    void diagonal_check_LtoR_uhalf(int y);
 public:
     Application(int width,int height);
     void start();
