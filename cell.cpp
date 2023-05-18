@@ -18,16 +18,16 @@ void Cell::draw()
     {
         if (_is_X)
         {
-            gout << move_to(_x+4, _y+4) << color(255,0,0) << box(_size_x-8, _size_y-8);
-            gout << move_to(_x+6, _y+6) << color(0,0,0) << box(_size_x-12, _size_y-12);
-        }
-        else
-        {
             gout << color(255,255,0);
             gout << move_to(_x+4, _y+4) << line(_size_x-8, _size_y-8);
             gout << move_to(_x+5, _y+4) << line(_size_x-8, _size_y-8);
             gout << move_to(_x+_size_x-4, _y+4) << line(-_size_x+8, _size_y-8);
             gout << move_to(_x+_size_x-5, _y+4) << line(-_size_x+8, _size_y-8);
+        }
+        else
+        {
+            gout << move_to(_x+4, _y+4) << color(255,0,0) << box(_size_x-8, _size_y-8);
+            gout << move_to(_x+6, _y+6) << color(0,0,0) << box(_size_x-12, _size_y-12);
         }
     }
     else
@@ -58,4 +58,9 @@ bool Cell::on_claim(bool _is_X)
         return true;
     }
     return false;
+}
+
+bool Cell::get_is_claimed()
+{
+    return _is_claimed;
 }

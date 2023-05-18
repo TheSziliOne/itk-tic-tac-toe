@@ -12,6 +12,7 @@ public:
     Cell(int x, int y, int sx, int sy);
     bool get_is_X();
     void set_is_X(bool _is_X);
+    bool get_is_claimed();
     void draw();
     bool on_claim(bool _is_X);
 };

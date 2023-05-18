@@ -109,7 +109,7 @@ void Application::logic()
 //-------------Balról-Jobbra dőlő diagonális win condition check-------------------//
     for(int x = 0; x < kx; x++)
     {
-        for(int y = 0; y < ky; y++)
+        for(int y = 10; y < ky; y++)
         {
             if(_cells[y][x]->get_is_X() == true && _cells[y][x]->get_is_claimed())
             {
