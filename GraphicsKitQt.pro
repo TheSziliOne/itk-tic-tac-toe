@@ -10,6 +10,7 @@ SOURCES += \
         list.cpp \
         main.cpp \
         graphics/graphics.cpp \
+        panel.cpp \
         szamlalo.cpp \
         widgets.cpp
 
@@ -34,5 +35,6 @@ HEADERS += \
     button.hpp \
     cell.hpp \
     list.hpp \
+    panel.hpp \
     szamlalo.hpp \
     widgets.hpp

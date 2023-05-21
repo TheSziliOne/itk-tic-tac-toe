@@ -1,6 +1,7 @@
 #include "application.hpp"
 #include "graphics.hpp"
 #include "cell.hpp"
+#include "panel.hpp"
 
 using namespace genv;
 using namespace std;
@@ -10,6 +11,11 @@ Application::Application(int width, int height) : _width(width),_height(height)
     _is_player_one = true;
 }
 
+void Application::restart_panel()
+{
+    Panel* p = new Panel(640,480,200,50, !_is_player_one);
+    p->draw();
+}
 
 void Application::logic()
 {
@@ -30,7 +36,7 @@ void Application::logic()
 
                 if (p1_points == 5)
                 {
-                   abort();
+                   _is_won = true;
                 }
                 if (y == 14)
                 {
@@ -44,7 +50,7 @@ void Application::logic()
 
                 if (p2_points == 5)
                 {
-                    abort();
+                    _is_won = true;
                 }
                 if (y == 14)
                 {
@@ -74,7 +80,7 @@ void Application::logic()
 
                 if (p1_points == 5)
                 {
-                   abort();
+                   _is_won = true;
                 }
                 if (y == 14)
                 {
@@ -88,7 +94,7 @@ void Application::logic()
 
                 if (p2_points == 5)
                 {
-                    abort();
+                    _is_won = true;
                 }
                 if (y == 14)
                 {
@@ -135,7 +141,7 @@ void Application::logic()
 //--------------------------------------------------------------------------------//
 }
 
-void Application::draw()
+void Application::start_screen()
 {
     gout.open(_width,_height);
 }
@@ -164,13 +170,14 @@ void Application::setup()
 
 void Application::event_loop()
 {
-    draw();
+
+    start_screen();
     event ev;
     int focus = -1;
     while(gin >> ev )
     {
         logic();
-        if (ev.type == ev_mouse && ev.button==btn_left)
+        if (ev.type == ev_mouse && ev.button==btn_left && !_is_won)
         {
             for (size_t i=0;i<_widgets.size();i++)
             {
@@ -197,7 +204,7 @@ void Application::event_loop()
         }
         if (focus!=-1) {
             _widgets[focus]->handle(ev);
-        }
+        }       
         for (Widget * w : _widgets) {
             w->draw();
         }
@@ -205,9 +212,12 @@ void Application::event_loop()
         {
             for(int y = 0; y < 15; y++)
             {
-
                 _cells[x][y]->draw();
             }
+        }
+        if(_is_won)
+        {
+            restart_panel();
         }
         gout << refresh;
     }
@@ -228,7 +238,7 @@ void Application::diagonal_check_RtoL_bhalf(int _y)
 
             if (p1_points == 5)
             {
-               abort();
+               _is_won = true;
             }
             if (y == 14)
             {
@@ -242,7 +252,7 @@ void Application::diagonal_check_RtoL_bhalf(int _y)
 
             if (p2_points == 5)
             {
-                abort();
+                _is_won = true;
             }
             if (y == 14)
             {
@@ -272,7 +282,7 @@ void Application::diagonal_check_RtoL_uhalf(int _x)
 
             if (p1_points == 5)
             {
-               abort();
+               _is_won = true;
             }
             if (x == 14)
             {
@@ -286,7 +296,7 @@ void Application::diagonal_check_RtoL_uhalf(int _x)
 
             if (p2_points == 5)
             {
-                abort();
+               _is_won = true;
             }
             if (x == 14)
             {
@@ -317,7 +327,7 @@ void Application::diagonal_check_LtoR_bhalf(int _x)
 
             if (p1_points == 5)
             {
-               abort();
+               _is_won = true;
             }
             if (y == 0)
             {
@@ -331,7 +341,7 @@ void Application::diagonal_check_LtoR_bhalf(int _x)
 
             if (p2_points == 5)
             {
-                abort();
+                _is_won = true;
             }
             if (y == 0)
             {
@@ -362,7 +372,7 @@ void Application::diagonal_check_LtoR_uhalf(int _y)
 
             if (p1_points == 5)
             {
-               abort();
+               _is_won = true;
             }
             if (y == 0)
             {
@@ -376,7 +386,7 @@ void Application::diagonal_check_LtoR_uhalf(int _y)
 
             if (p2_points == 5)
             {
-                abort();
+                _is_won = true;
             }
             if (y == 0)
             {
@@ -392,4 +402,17 @@ void Application::diagonal_check_LtoR_uhalf(int _y)
     }
 }
 
+int Application::get_width()
+{
+    return _width;
+}
 
+int Application::get_height()
+{
+    return _height;
+}
+
+bool Application ::get_is_player_pne()
+{
+    return _is_player_one;
+}

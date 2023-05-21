@@ -1,10 +1,13 @@
 #include "widgets.hpp"
 #include "graphics.hpp"
+#include "application.hpp"
 
 using namespace genv;
 
 Widget::Widget(int x, int y, int sx, int sy) : _x(x), _y(y), _size_x(sx), _size_y(sy)
-{}
+{
+
+}
 
 bool Widget::is_selected(int mouse_x, int mouse_y)
 {

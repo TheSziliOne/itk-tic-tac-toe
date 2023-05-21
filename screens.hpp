@@ -1,11 +1,13 @@
 #ifndef SCREENS_HPP
 #define SCREENS_HPP
 
+#include "widgets.hpp"
 
-class Screens
+class Screens: public Widget
 {
 public:
-    void victory_screen();
+    bool is_menu = true;
+    void draw();
 };
 
 #endif // SCREENS_HPP
