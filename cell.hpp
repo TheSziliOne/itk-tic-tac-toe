@@ -1,9 +1,9 @@
 #ifndef CELL_HPP
 #define CELL_HPP
-#include "button.hpp"
+#include "widgets.hpp"
 using namespace genv;
 
-class Cell : public Button
+class Cell : public Widget
 {
 private:
     bool _is_X;
@@ -15,6 +15,7 @@ public:
     bool get_is_claimed();
     void draw();
     bool on_claim(bool _is_X);
+    virtual void handle(genv::event ev);
 };
 
 #endif // CELL_HPP

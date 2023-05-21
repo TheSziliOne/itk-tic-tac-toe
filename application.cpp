@@ -1,6 +1,5 @@
 #include "application.hpp"
 #include "graphics.hpp"
-#include "button.hpp"
 #include "cell.hpp"
 
 using namespace genv;
@@ -10,6 +9,7 @@ Application::Application(int width, int height) : _width(width),_height(height)
 {
     _is_player_one = true;
 }
+
 
 void Application::logic()
 {
@@ -106,7 +106,7 @@ void Application::logic()
     p2_points = 0;
 
     }
-//-------------Balról-Jobbra dőlő diagonális win condition check-------------------//
+//-------------Jobbról-Balra dőlő diagonális win condition check-------------------//
 
     for(int i = 0; i < 15; i++)
     {
@@ -116,6 +116,8 @@ void Application::logic()
     {
         diagonal_check_RtoL_uhalf(i);
     }
+
+//-------------Balról-Jobbra dőlő diagonális win condition check-------------------//
 
     for(int i = 0; i < 15; i++)
     {
@@ -130,7 +132,7 @@ void Application::logic()
     p1_points = 0;
     p2_points = 0;
 
-
+//--------------------------------------------------------------------------------//
 }
 
 void Application::draw()
@@ -158,6 +160,7 @@ void Application::setup()
         }
     }
 }
+
 
 void Application::event_loop()
 {
@@ -388,3 +391,5 @@ void Application::diagonal_check_LtoR_uhalf(int _y)
         x++;
     }
 }
+
+

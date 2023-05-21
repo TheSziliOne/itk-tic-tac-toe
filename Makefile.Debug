@@ -131,7 +131,8 @@ debug/application.o: application.cpp application.hpp \
 		widgets.hpp \
 		graphics.hpp \
 		cell.hpp \
-		button.hpp
+		button.hpp \
+		screens.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\application.o application.cpp
 
 debug/button.o: button.cpp button.hpp \

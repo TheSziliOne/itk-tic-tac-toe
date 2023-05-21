@@ -131,7 +131,8 @@ release/application.o: application.cpp application.hpp \
 		widgets.hpp \
 		graphics.hpp \
 		cell.hpp \
-		button.hpp
+		button.hpp \
+		screens.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\application.o application.cpp
 
 release/button.o: button.cpp button.hpp \

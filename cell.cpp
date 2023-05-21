@@ -1,11 +1,11 @@
 #include "cell.hpp"
 #include "graphics.hpp"
-#include "button.hpp"
 #include <cmath>;
+#include "widgets.hpp"
 
 using namespace genv;
 
-Cell::Cell(int x, int y, int sx, int sy) : Button(x,y,sx,sy)
+Cell::Cell(int x, int y, int sx, int sy) : Widget(x,y,sx,sy)
 {
     _is_X = false;
     _is_claimed = false;
@@ -63,4 +63,11 @@ bool Cell::on_claim(bool _is_X)
 bool Cell::get_is_claimed()
 {
     return _is_claimed;
+}
+
+void Cell::handle(event ev)
+{
+    if (ev.type == ev_mouse && is_selected(ev.pos_x, ev.pos_y) && ev.button==btn_left)
+    {
+    }
 }
